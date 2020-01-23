@@ -40,6 +40,16 @@ app.get('/hello/:userName', hello.view);
 // Example route
 // app.get('/users', user.list);
 
+exports.view = function(req, res){
+	var nameToShow = req.params.userName;
+	if(nameToShow == undefined){
+		nameToShow = 'World';
+	}
+
+	console.log("Name is" + nameToShow);
+	res.render('index', {'name': '',})
+}
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
